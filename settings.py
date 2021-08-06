@@ -2,6 +2,11 @@ import os
 
 from dotenv import load_dotenv
 
+# from pydantic import BaseSettings
+
+# settings = BaseSettings(_env_path=_env_path)
+
+
 _env_path = ".env"
 
 if not os.path.exists(".env"):
