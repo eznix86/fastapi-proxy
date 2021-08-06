@@ -76,6 +76,7 @@ params = {"status": settings.PROXY_STATUS, "body": settings.BODY}
     "/api/proxy/html/aiohttp",
     description="Proxy text/html using aiohttp",
     name="HTML aiohttp proxy",
+    response_class=HTMLResponse
 )
 async def html_aiohttp(request: Request, body: EchoDto = Depends()):
     clock = ElapsedTime()
@@ -97,6 +98,7 @@ async def html_aiohttp(request: Request, body: EchoDto = Depends()):
     "/api/proxy/json/aiohttp",
     description="Proxy JSON using aiohttp",
     name="JSON aiohttp proxy",
+    response_class=JSONResponse
 )
 async def json_aiohttp(request: Request):
     async with aiohttp.ClientSession() as session:
