@@ -1,3 +1,5 @@
+from fastapi.param_functions import Depends
+from src.schemas import EchoDto
 import aiohttp
 from fastapi import APIRouter
 from starlette.requests import Request
@@ -75,10 +77,13 @@ params = {"status": settings.PROXY_STATUS, "body": settings.BODY}
     description="Proxy text/html using aiohttp",
     name="HTML aiohttp proxy",
 )
-async def html_aiohttp(request: Request):
+async def html_aiohttp(request: Request, body: EchoDto = Depends()):
     clock = ElapsedTime()
     clock.start()
     async with aiohttp.ClientSession() as session:
+        params.update({
+            "body": body.message
+        })
         async with session.get(
             settings.PROXY_URL, allow_redirects=True, params=params
         ) as r:

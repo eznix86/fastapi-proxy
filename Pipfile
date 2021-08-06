@@ -9,6 +9,7 @@ aiohttp = "*"
 python-dotenv = "*"
 uvicorn = "*"
 httpx = "*"
+pydantic = "*"
 
 [dev-packages]
 black = "*"
